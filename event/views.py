@@ -25,6 +25,6 @@ def signup(request):
     else:
         form = SignUpForm() # An unbound form
 
-    return render(request, 'singup.html', {
+    return render(request, 'signup.html', {
         'form': form,
     })
