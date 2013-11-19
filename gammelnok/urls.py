@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     # url(r'^$', 'gammelnok.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^signup/', 'event.views.signup'),
+    url(r'^signup/edit/(?P<uuid>\S+)/$', 'event.views.signup_edit', name='signup_edit'),
+    url(r'^signup/(?P<event_id>\S+)/$', 'event.views.signup', name='signup'),
+    url(r'^signup/', 'event.views.signup_top'),
+    url(r'^thanks/(?P<event_id>\S+)/$', 'event.views.thanks', name='thanks'),
     url(r'^admin/', include(admin.site.urls)),
 )

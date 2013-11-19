@@ -1,0 +1,5 @@
+{{ attendee }} har netop tilmeldt {{ attendee.number_of_people }} person{% if attendee.number_of_people > 1 %}er{% endif %} til {{ event }}.
+
+For at se eller ændre denne tilmelding, se venligst:
+
+    {{ edit_link }}

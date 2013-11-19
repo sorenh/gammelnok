@@ -1,1 +1,13 @@
-Test
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block main %}
+<div class="row">
+  <div class="col-md-4">
+    <h1>Tilmelding til {{ event }}</h1>
+    <form action="{{ request.get_absolute_url }}" method="post">{% csrf_token %}
+      {{ form|bootstrap }}
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+{% endblock %}

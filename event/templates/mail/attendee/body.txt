@@ -1,0 +1,8 @@
+Tak for din tilmelding til {{ event }}.
+
+Du har tilmeldt {{ attendee.number_of_people }} person{% if attendee.number_of_people > 1 %}er{% endif %}.
+
+Hvis du ønsker at ændre eller annulere din tilmelding, så benyt venligst
+dette link:
+
+    {{ edit_link }}
