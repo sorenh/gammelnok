@@ -21,7 +21,7 @@ class MyCling(Cling):
         * the host is provided as part of the base_url
         * the request's path isn't under the media path (or equal)
         """
-        print path, self.base_url
+        print path, self.base_url, path.startswith(self.base_url[2]) and not self.base_url[1]
         return path.startswith(self.base_url[2]) and not self.base_url[1]
 
 
