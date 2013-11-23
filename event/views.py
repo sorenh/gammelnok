@@ -13,6 +13,9 @@ class SignUpForm(forms.Form):
     number_of_people = forms.IntegerField(initial=1)
     email = forms.EmailField()
 
+def front(request):
+    return HttpResponseRedirect(reverse('signup_top'))
+
 def signup_top(request):
     now = datetime.datetime.now()
     upcoming_events = models.Event.objects.filter(date__gt=now)
@@ -20,7 +23,12 @@ def signup_top(request):
         event = upcoming_events[0]
         return HttpResponseRedirect(reverse('signup',
                                             kwargs={'event_id': event.id}))
-        
+    else:
+        return render(request, 'upcoming_events.html', {
+            'upcoming_events': upcoming_events,
+        })
+
+
 def thanks(request, event_id):
     event = get_object_or_404(models.Event, id=event_id)
     return render(request, 'thanks.html', {
@@ -29,7 +37,7 @@ def thanks(request, event_id):
 
 def signup_edit(request, uuid):
     attendee = get_object_or_404(models.Attendee, uuid=uuid)
-    
+
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():

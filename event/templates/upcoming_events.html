@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>Kommende arrangementer</h1>
+<ul>
+  {% for event in upcoming_events %}
+  <li><a href="{% url "signup" event_id=event.id %}">{{ event }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

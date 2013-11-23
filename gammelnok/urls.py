@@ -10,7 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^signup/edit/(?P<uuid>\S+)/$', 'event.views.signup_edit', name='signup_edit'),
     url(r'^signup/(?P<event_id>\S+)/$', 'event.views.signup', name='signup'),
-    url(r'^signup/', 'event.views.signup_top'),
+    url(r'^signup/', 'event.views.signup_top', name='signup_top'),
     url(r'^thanks/(?P<event_id>\S+)/$', 'event.views.thanks', name='thanks'),
     url(r'^admin/', include(admin.site.urls)),
 )

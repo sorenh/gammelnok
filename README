@@ -1,2 +1,4 @@
 # Source the env:
-source <(heroku config -s | grep -v postgres | sed -e "s/^\([^=]*\)=\(.*\)/export \1='\2'/g")
+heroku config -s > heroku.config
+# If the above fails, we still 
+source <(cat heroku.config | grep -v postgres | sed -e "s/^\([^=]*\)=\(.*\)/export \1='\2'/g")
