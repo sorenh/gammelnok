@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block main %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+	  <th>Navn</th>
+	  <th>Antal tilmeldte</th>
+	  <th>E-mail</th>
+	</tr>
+  </thead>
+  <tbody>
+    {% for attendee in event.attendees.all %}
+    <tr>
+	  <td>{{ attendee.name }}</td>
+	  <td>{{ attendee.number_of_people }}</td>
+	  <td>{{ attendee.email }}</td>
+	</tr>
+	{% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+	  <td>I alt</td>
+	  <td>{{ event.total_attendees }}</td>
+	  <td></td>
+	</tr>
+  </tfoot>
+</table>
+{% endblock %}

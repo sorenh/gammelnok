@@ -30,6 +30,12 @@ def signup_top(request):
         })
 
 
+def list_attendees(request, event_id):
+    event = get_object_or_404(models.Event, id=event_id)
+    return render(request, 'list_attendees.html', {
+        'event': event,
+    })
+
 def thanks(request, event_id):
     event = get_object_or_404(models.Event, id=event_id)
     return render(request, 'thanks.html', {
@@ -62,7 +68,7 @@ def signup_edit(request, uuid):
     return render(request, 'signup.html', {
         'form': form,
         'event': attendee.event,
-    })    
+    })
 
 def signup(request, event_id):
     event = get_object_or_404(models.Event, id=event_id)
@@ -95,7 +101,7 @@ def signup(request, event_id):
                       event.email,
                       [event.email],
                       fail_silently=False)
-            
+
             return HttpResponseRedirect(reverse('thanks',
                                                 kwargs={'event_id': event.id}))
     else:
