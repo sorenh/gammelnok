@@ -5,13 +5,14 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
 
 from event import models
 
 class SignUpForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    number_of_people = forms.IntegerField(initial=1)
-    email = forms.EmailField()
+    name = forms.CharField(max_length=100, label=_("Name"))
+    number_of_people = forms.IntegerField(initial=1, label=_("Number of people"))
+    email = forms.EmailField(label=_("E-mail"))
 
 def front(request):
     return HttpResponseRedirect(reverse('signup_top'))
