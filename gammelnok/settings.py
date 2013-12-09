@@ -42,11 +42,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'event',
     'opbeat.contrib.django',
-    'bootstrapform'
-
+    'bootstrapform',
+    'debug_toolbar'
 )
 
 MIDDLEWARE_CLASSES = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -163,3 +164,4 @@ EMAIL_HOST_USER=os.environ['MAILGUN_SMTP_LOGIN']
 EMAIL_HOST_PASSWORD=os.environ['MAILGUN_SMTP_PASSWORD']
 EMAIL_PORT=os.environ['MAILGUN_SMTP_PORT']
 EMAIL_USE_TLS=True
+INTERNAL_IPS=('91.150.242.84',)
